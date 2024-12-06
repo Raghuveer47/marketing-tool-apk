@@ -6,6 +6,30 @@
   <title>{{ title }}</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
+    #download-button {
+    background-color: #007BFF; /* Primary button color */
+    color: #FFFFFF; /* White text color */
+    border: none; /* Remove border */
+    padding: 12px 20px; /* Add padding for better touch area */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1em; /* Adjust font size */
+    font-weight: bold; /* Make text bold */
+    cursor: pointer; /* Show pointer on hover */
+    display: block; /* Ensure button is block-level */
+    margin: 20px auto; /* Center button horizontally and add vertical spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  }
+
+  #download-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+
+  #download-button:active {
+    background-color: #003d82; /* Even darker blue on click */
+    transform: scale(0.95); /* Slight shrink on click */
+  }
     @media screen and (max-width: 600px) {
       .container {
         width: 90%;
@@ -298,27 +322,32 @@
 
 
  <script>
-    document.getElementById('download-button').addEventListener('click', function () {
-      // Target the container you want to capture
-      const container = document.querySelector('.container');
-  
-      // Use html2canvas to capture the container
-      html2canvas(container, { scale: 2 }).then((canvas) => {
-        // Convert the canvas to a data URL
-        const image = canvas.toDataURL('image/png');
-  
-        // Create a link element to trigger the download
-        const link = document.createElement('a');
-        link.href = image;
-        link.download = 'poster.png';
-  
-        // Append link to the body, click it, and remove it
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
+  document.getElementById('download-button').addEventListener('click', function () {
+    const container = document.querySelector('.container');
+
+    // Use html2canvas with CORS enabled to include cross-origin images
+    html2canvas(container, {
+      scale: 2, // Higher resolution
+      useCORS: true, // Enable cross-origin loading for images
+      allowTaint: true, // Allow tainted images
+    }).then((canvas) => {
+      // Convert the canvas to a PNG image
+      const image = canvas.toDataURL('image/png');
+
+      // Create a temporary link element to trigger the download
+      const link = document.createElement('a');
+      link.href = image;
+      link.download = 'poster.png';
+
+      // Append the link to the document, click it, and remove it
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }).catch((error) => {
+      console.error('Error generating the image:', error);
     });
-  </script>
-  
+  });
+</script>
+
 </body>
 </html>

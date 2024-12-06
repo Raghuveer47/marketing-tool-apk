@@ -1,0 +1,131 @@
+<!-- templates/poster_template.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ title }}</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    @media screen and (max-width: 600px) {
+      .container {
+        width: 90%;
+      }
+
+      .home-features {
+        flex-direction: column;
+      }
+
+      .home-features figure {
+        margin-bottom: 10px;
+      }
+
+      .for-sale h1 {
+        font-size: 1.5em;
+      }
+
+      .for-sale h2 {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <div class="container">
+    <main>
+        <img src="{{ property_image }}" alt="Property Image" class="property-image">
+      
+        <div class="for-sale">
+            <img src="https://res.cloudinary.com/dy9zlgjh6/image/upload/v1733479776/Screenshot_2024-12-06_153218-removebg-preview_tysqho.png" alt="Company Logo" class="company-logo">
+            <header>
+            <!-- Add company logo above the company name -->
+            
+            <h3><span class="blue">{{ company_name }}</span><br /> PROPERTY</h3>
+          </header>
+          
+          <h1><span class="blue light-weight">FOR</span><br /> <strong>SALE</strong></h1>
+          <h4>OFFERED AT</h4>
+          <h2>₹{{ price }}</h2>
+        </div>
+      </main>
+      
+      
+      
+    <div class="slogan">
+      <h3>{{ slogan }}</h3>
+    </div>
+    <div class="home-features">
+      <figure>
+        <img src="{{ feature1_image }}" alt="Feature 1">
+        <figcaption>
+          <h4>{{ feature1 }}</h4>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="{{ feature2_image }}" alt="Feature 2">
+        <figcaption>
+          <h4>{{ feature2 }}</h4>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="{{ feature3_image }}" alt="Feature 3">
+        <figcaption>
+          <h4>{{ feature3 }}</h4>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="more-info">
+      <ul>
+        <h2>OUR FACILITIES</h2>
+        {% for facility in facilities %}
+          <li>{{ facility }}</li>
+        {% endfor %}
+      </ul>
+      <div class="realtor">
+        <figure>
+          <img src="{{ realtor_image }}" alt="Realtor">
+          <figcaption>
+            <h3>{{ realtor_name }}</h3>
+            <p>{{ realtor_role }}</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <footer>
+      <ul>
+        <li>Call: {{ contact_number }}</li>
+        <li>Email: {{ contact_email }}</li>
+        <li>Website: {{ website }}</li>
+      </ul>
+    </footer>
+  </div>
+  
+  
+ <button id="download-button">Download as Image</button>
+
+
+ <script>
+    document.getElementById('download-button').addEventListener('click', function () {
+      // Target the container you want to capture
+      const container = document.querySelector('.container');
+  
+      // Use html2canvas to capture the container
+      html2canvas(container, { scale: 2 }).then((canvas) => {
+        // Convert the canvas to a data URL
+        const image = canvas.toDataURL('image/png');
+  
+        // Create a link element to trigger the download
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'poster.png';
+  
+        // Append link to the body, click it, and remove it
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    });
+  </script>
+  
+</body>
+</html>

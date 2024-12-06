@@ -1,0 +1,192 @@
+.blue {
+    color: rgb(92, 133, 214);
+  }
+  img {
+    width: 100%;
+  }
+  .container {
+    width: 650px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255,255,255);
+    box-shadow: 0 0 10px gray;
+  }
+  main {
+    display: flex;
+    img {
+      flex: 2;
+      width: 500px;
+      height: 300px;
+    }
+    .for-sale {
+      flex: 1;
+      padding: 20px 0;
+      header {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        .fa-home {
+          font-size: 45px;
+          background: rgb(92, 133, 214);
+          color: rgb(255,255,255);
+          padding: 10px;
+          border-radius: 5px;
+          margin-right: 10px;
+        }
+      }
+      h1 {
+        font-size: 40px;
+        line-height: 1;
+        margin-bottom: 0;
+        padding-left: 20px;
+        .light-weight {
+          font-weight: 100;
+        }
+      }
+      h4 {
+        line-height: 0;
+        font-size: 13px;
+        padding-left: 20px;
+        color: rgb(92, 133, 214);
+      }
+      h2 {
+        font-size: 30px;
+        font-weight: 200;
+        padding-left: 20px;
+        margin-top: 0;
+      }
+      .property-image {
+        width: 100%;
+        max-height: 300px; /* Restrict the height of the property image */
+        object-fit: cover; /* Ensure the image fits within the container while maintaining proportions */
+        border-radius: 8px;
+      }
+      
+      .for-sale {
+        text-align: center;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: rgb(92, 133, 214); /* Background color for the "For Sale" section */
+        color: white;
+        border-radius: 8px;
+      }
+      
+      .for-sale header {
+        margin-bottom: 15px; /* Space between header and the "For Sale" text */
+      }
+      
+      .company-logo {
+        display: block; /* Ensure the logo is block-level for proper alignment */
+        margin: 0 auto 10px; /* Center the logo and add spacing below it */
+        width: 80px; /* Set the width of the logo */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Ensure the logo fits nicely within its container */
+      }
+      
+      .for-sale h3 {
+        margin-top: 0; /* Remove extra space above the company name */
+        font-size: 1.5em;
+        line-height: 1.2; /* Adjust line spacing for better readability */
+      }
+      
+      .for-sale h1 {
+        font-size: 2em;
+        margin: 20px 0; /* Add space around the "FOR SALE" text */
+      }
+      
+      .for-sale h4, .for-sale h2 {
+        font-size: 1.2em;
+        margin: 10px 0; /* Add spacing around the price */
+      }
+      
+    }
+   
+     
+      
+  }
+  .slogan {
+    background: rgb(92, 133, 214);
+    text-transform: uppercase;
+    color: rgb(255,255,255);
+    flex: 1;
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 10px;
+    h3 {
+      margin: 0;
+    }
+  }
+  .home-features {
+    display: flex;
+    figure {
+      margin: 0;
+      flex: 1;
+      img {
+        height: 150px;
+        margin: 0;
+        display: block;
+      }
+    }
+    figcaption {
+      background: rgb(50,50,50);
+      color: rgb(255,255,255);
+      padding: 10px;
+      text-align: center;
+      margin-top: 0;
+      h4 {
+        margin: 0;
+      }
+    }
+    .active {
+      background: rgb(92, 133, 214);
+    }
+  }
+
+  
+  .more-info {
+    display: flex;
+    ul {
+      list-style: none;
+      margin: auto 0;
+      padding-right: 0;
+      padding-left: 0;
+      flex: 2;
+      h2 {
+        margin-left: 20px;
+        margin-top: 0;
+      }
+      li {
+        margin: 10px 0 0 20px;
+        font-size: 14px;
+        color: gray;
+        &:before {
+          content: '\f00d';
+          font-family: 'FontAwesome';
+          margin-right: 15px;
+          color: rgb(92, 133, 214);
+        }
+      }
+    }
+    .realtor {
+      flex: 1;
+      line-height: 0.5;
+      text-align: center;
+      color: rgb(255,255,255);
+      background: linear-gradient(0deg,rgb(50,50,50) 51%,rgb(92, 133, 214) 51%);
+      figure img {
+        border-radius: 5px;
+      }
+    }
+  }
+  footer {
+    background: rgb(92, 133, 214);
+    color: rgb(255,255,255);
+    ul {
+      list-style: none;
+      padding: 20px;
+      margin: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+  }

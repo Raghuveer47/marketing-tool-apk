@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import PosterForm
 from .models import Poster
+from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
 
 def create_poster(request):
@@ -61,3 +62,10 @@ def poster_list(request):
     posters = Poster.objects.all()
     return render(request, 'poster_list.html', {'posters': posters})
 
+
+def delete_poster(request, pk):
+    if request.method == "POST":
+        poster = get_object_or_404(Poster, pk=pk)
+        poster.delete()
+        return redirect('poster_list')  # Redirect back to the list page
+    return HttpResponseForbidden("You are not allowed to access this page.")

@@ -4,6 +4,21 @@
     <title>Poster Generator - List</title>
     <style>
         /* General Styling */
+          /* Add some styling for Delete button */
+          .delete-button {
+            background-color: #e74c3c; /* Red color for delete button */
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-button:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -71,6 +86,11 @@
                         <img src="{{ poster.property_image.url }}" alt="{{ poster.company_name }}">
                         <h3>{{ poster.company_name }}</h3>
                     </a>
+                    <br>
+                    <form method="post" action="{% url 'delete_poster' poster.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
                 </div>
             {% endfor %}
         </div>

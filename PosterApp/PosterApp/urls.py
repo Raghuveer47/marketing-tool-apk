@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Admin panel
-    path('poster/', include('poster.urls')),  # Include the poster app's URLs
+    path('poster/', include('poster.urls')),
+      path('', include('poster.urls')),  # Include the poster app's URLs
 ]
 
 # Serve media files during development
